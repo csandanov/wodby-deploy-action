@@ -2,16 +2,20 @@ name: 'Wodby deploy'
 description: 'Handles a deploy on a Wodby app instance'
 inputs:
   uuid:
-    description: 'Instance UUID'
+    description: 'Instance UUID (provided by Wodby)'
     required: true
+  path:
+    description: 'Base path to build'
+    required: true
+    default: './'
 runs:
   using: "composite"
   steps:
   - run: wget -qO- https://api.wodby.com/api/v1/get/cli | sh
     shell: bash
-  - run: wodby ci init $WODBY_INSTANCE_UUID
+  - run: wodby ci init ${{ inputs.uuid }}.
     shell: bash
-  - run: wodby ci build --from ./
+  - run: wodby ci build --from ${{ inputs.path }}.
     shell: bash
   - run: wodby ci release
     shell: bash
