@@ -18,7 +18,7 @@ runs:
       wodby ci init ${{ inputs.uuid }}
       cat /tmp/.wodby-ci.json
     shell: bash
-  - run: wodby ci build --from ${{ inputs.path }} .
+  - run: wodby ci build --from ${{ inputs.path }}
     shell: bash
   - run: wodby ci release
     shell: bash
