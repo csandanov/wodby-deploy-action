@@ -17,7 +17,7 @@ runs:
     shell: bash
   - run: echo $WODBY_API_KEY
     shell: bash
-  - run: wodby ci init ${{ inputs.uuid }}.
+  - run: wodby ci init ${{ inputs.uuid }}
     shell: bash
   - run: wodby ci build --from ${{ inputs.path }}.
     shell: bash
