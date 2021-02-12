@@ -20,7 +20,4 @@ runs:
     shell: bash
   - run: wodby ci build --from ${{ inputs.path }}
     shell: bash
-  - run: wodby ci release
-    shell: bash
-  - run: wodby ci deploy
-    shell: bash
+
