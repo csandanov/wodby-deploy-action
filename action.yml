@@ -16,10 +16,10 @@ runs:
   - run: wget -qO- https://api.wodby.com/api/v1/get/cli | sh
     shell: bash
   - run: |
-      set -ex
-      cat /tmp/wodby-ci.json
+      set -x
       echo $WODBY_API_KEY
       wodby ci init ${{ inputs.uuid }}
+      cat /tmp/wodby-ci.json
     shell: bash
   - run: wodby ci build --from ${{ inputs.path }} .
     shell: bash
