@@ -15,11 +15,13 @@ runs:
   steps:
   - run: wget -qO- https://api.wodby.com/api/v1/get/cli | sh
     shell: bash
-  - run: echo $WODBY_API_KEY
+  - run: |
+      set -ex
+      cat /tmp/wodby-ci.json
+      echo $WODBY_API_KEY
+      wodby ci init ${{ inputs.uuid }}
     shell: bash
-  - run: wodby ci init ${{ inputs.uuid }}
-    shell: bash
-  - run: wodby ci build --from ${{ inputs.path }}.
+  - run: wodby ci build --from ${{ inputs.path }} .
     shell: bash
   - run: wodby ci release
     shell: bash
